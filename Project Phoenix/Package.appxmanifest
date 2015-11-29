@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="a9d5a317-bb67-486b-8213-a1de120bd3e1" Publisher="CN=mrmhk" Version="0.1.0.0" />
+  <Identity Name="7668MrMHK.ProjectPhoenix" Publisher="CN=60E6828F-B823-4814-99CB-6CC239B885D4" Version="0.1.0.0" />
   <mp:PhoneIdentity PhoneProductId="a9d5a317-bb67-486b-8213-a1de120bd3e1" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>Project Phoenix Beta 1</DisplayName>
+    <DisplayName>Project Phoenix</DisplayName>
     <PublisherDisplayName>MrMHK</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Project_Phoenix.App">
-      <uap:VisualElements DisplayName="Project Phoenix Beta 1" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Project Phoenix" BackgroundColor="transparent">
+      <uap:VisualElements DisplayName="Project Phoenix" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Project Phoenix" BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png">
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
