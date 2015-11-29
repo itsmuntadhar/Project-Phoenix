@@ -1,0 +1,170 @@
+﻿<Page
+    x:Class="Project_Phoenix.Views.BasicControlView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Project_Phoenix.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" MaxWidth="1024" HorizontalAlignment="Center">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="stkMaster.Orientation" Value="Vertical"/>
+                        <Setter Target="stkAnalog.Margin" Value="10"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="stkMaster.Orientation" Value="Horizontal"/>
+                        <Setter Target="stkAnalog.Margin" Value="50 10 10 10"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <ScrollViewer>
+            <StackPanel x:Name="stkMaster">
+                <StackPanel x:Name="stkDigital" Margin="10" Visibility="Visible">
+                    <TextBlock FontSize="28" Foreground="{StaticResource SystemControlBackgroundAccentBrush}" Text="Digital IO:"/>
+                    <StackPanel Orientation="Horizontal" Margin="10 10 0 0">
+                        <TextBlock FontSize="24" Text="Pin 2: "/>
+                        <Button x:Name="btnDigitalPin2Write" Content="Off" Background="Red" BorderBrush="Red" Foreground="White" 
+                            FontSize="20" Margin="23 0 0 0" Width="97" Click="btnDigitalPin_Click"/>
+                        <Button x:Name="btnDigitalPin2Read" Content="Read" Background="DarkBlue" BorderBrush="DarkBlue" Foreground="White" 
+                            FontSize="20" Margin="10 0 0 0" Width="97" Click="btnDigitalPin_Click"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10 10 0 0">
+                        <TextBlock FontSize="24" Text="Pin 3: "/>
+                        <Button x:Name="btnDigitalPin3Write" Content="Off" Background="Red" BorderBrush="Red" Foreground="White" 
+                            FontSize="20" Margin="23 0 0 0" Width="97" Click="btnDigitalPin_Click"/>
+                        <Button x:Name="btnDigitalPin3Read" Content="Read" Background="DarkBlue" BorderBrush="DarkBlue" Foreground="White" 
+                            FontSize="20" Margin="10 0 0 0" Width="97" Click="btnDigitalPin_Click"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10 10 0 0">
+                        <TextBlock FontSize="24" Text="Pin 4: "/>
+                        <Button x:Name="btnDigitalPin4Write" Content="Off" Background="Red" BorderBrush="Red" Foreground="White" 
+                            FontSize="20" Margin="23 0 0 0" Width="97" Click="btnDigitalPin_Click"/>
+                        <Button x:Name="btnDigitalPin4Read" Content="Read" Background="DarkBlue" BorderBrush="DarkBlue" Foreground="White" 
+                            FontSize="20" Margin="10 0 0 0" Width="97" Click="btnDigitalPin_Click"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10 10 0 0">
+                        <TextBlock FontSize="24" Text="Pin 5: "/>
+                        <Button x:Name="btnDigitalPin5Write" Content="Off" Background="Red" BorderBrush="Red" Foreground="White" 
+                            FontSize="20" Margin="23 0 0 0" Width="97" Click="btnDigitalPin_Click"/>
+                        <Button x:Name="btnDigitalPin5Read" Content="Read" Background="DarkBlue" BorderBrush="DarkBlue" Foreground="White" 
+                            FontSize="20" Margin="10 0 0 0" Width="97" Click="btnDigitalPin_Click"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10 10 0 0">
+                        <TextBlock FontSize="24" Text="Pin 6: "/>
+                        <Button x:Name="btnDigitalPin6Write" Content="Off" Background="Red" BorderBrush="Red" Foreground="White" 
+                            FontSize="20" Margin="23 0 0 0" Width="97" Click="btnDigitalPin_Click"/>
+                        <Button x:Name="btnDigitalPin6Read" Content="Read" Background="DarkBlue" BorderBrush="DarkBlue" Foreground="White" 
+                            FontSize="20" Margin="10 0 0 0" Width="97" Click="btnDigitalPin_Click"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10 10 0 0">
+                        <TextBlock FontSize="24" Text="Pin 7: "/>
+                        <Button x:Name="btnDigitalPin7Write" Content="Off" Background="Red" BorderBrush="Red" Foreground="White" 
+                            FontSize="20" Margin="23 0 0 0" Width="97" Click="btnDigitalPin_Click"/>
+                        <Button x:Name="btnDigitalPin7Read" Content="Read" Background="DarkBlue" BorderBrush="DarkBlue" Foreground="White" 
+                            FontSize="20" Margin="10 0 0 0" Width="97" Click="btnDigitalPin_Click"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10 10 0 0">
+                        <TextBlock FontSize="24" Text="Pin 8: "/>
+                        <Button x:Name="btnDigitalPin8Write" Content="Off" Background="Red" BorderBrush="Red" Foreground="White" 
+                            FontSize="20" Margin="23 0 0 0" Width="97" Click="btnDigitalPin_Click"/>
+                        <Button x:Name="btnDigitalPin8Read" Content="Read" Background="DarkBlue" BorderBrush="DarkBlue" Foreground="White" 
+                            FontSize="20" Margin="10 0 0 0" Width="97" Click="btnDigitalPin_Click"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10 10 0 0">
+                        <TextBlock FontSize="24" Text="Pin 9: "/>
+                        <Button x:Name="btnDigitalPin9Write" Content="Off" Background="Red" BorderBrush="Red" Foreground="White" 
+                            FontSize="20" Margin="23 0 0 0" Width="97" Click="btnDigitalPin_Click"/>
+                        <Button x:Name="btnDigitalPin9Read" Content="Read" Background="DarkBlue" BorderBrush="DarkBlue" Foreground="White" 
+                            FontSize="20" Margin="10 0 0 0" Width="97" Click="btnDigitalPin_Click"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10 10 0 0">
+                        <TextBlock FontSize="24" Text="Pin 10: "/>
+                        <Button x:Name="btnDigitalPin10Write" Content="Off" Background="Red" BorderBrush="Red" Foreground="White" 
+                            FontSize="20" Margin="10 0 0 0" Width="97" Click="btnDigitalPin_Click"/>
+                        <Button x:Name="btnDigitalPin10Read" Content="Read" Background="DarkBlue" BorderBrush="DarkBlue" Foreground="White" 
+                            FontSize="20" Margin="10 0 0 0" Width="97" Click="btnDigitalPin_Click"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10 10 0 0">
+                        <TextBlock FontSize="24" Text="Pin 11: "/>
+                        <Button x:Name="btnDigitalPin11Write" Content="Off" Background="Red" BorderBrush="Red" Foreground="White" 
+                            FontSize="20" Margin="10 0 0 0" Width="97" Click="btnDigitalPin_Click"/>
+                        <Button x:Name="btnDigitalPin11Read" Content="Read" Background="DarkBlue" BorderBrush="DarkBlue" Foreground="White" 
+                            FontSize="20" Margin="10 0 0 0" Width="97" Click="btnDigitalPin_Click"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10 10 0 0">
+                        <TextBlock FontSize="24" Text="Pin 12: "/>
+                        <Button x:Name="btnDigitalPin12Write" Content="Off" Background="Red" BorderBrush="Red" Foreground="White" 
+                            FontSize="20" Margin="10 0 0 0" Width="97" Click="btnDigitalPin_Click"/>
+                        <Button x:Name="btnDigitalPin12Read" Content="Read" Background="DarkBlue" BorderBrush="DarkBlue" Foreground="White" 
+                            FontSize="20" Margin="10 0 0 0" Width="97" Click="btnDigitalPin_Click"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="10 10 0 0">
+                        <TextBlock FontSize="24" Text="Pin 13: "/>
+                        <Button x:Name="btnDigitalPin13Write" Content="Off" Background="Red" BorderBrush="Red" Foreground="White" 
+                            FontSize="20" Margin="10 0 0 0" Width="97" Click="btnDigitalPin_Click"/>
+                        <Button x:Name="btnDigitalPin13Read" Content="Read" Background="DarkBlue" BorderBrush="DarkBlue" Foreground="White" 
+                            FontSize="20" Margin="10 0 0 0" Width="97" Click="btnDigitalPin_Click"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel x:Name="stkAnalog">
+                    <TextBlock FontSize="28" Foreground="{StaticResource SystemControlBackgroundAccentBrush}" Text="Analog IO:"/>
+                    <StackPanel Margin="10 10 10 0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="24" Text="Pin 3: "/>
+                            <Button x:Name="btnAnalogPin3ReadWrite" Content="Read" FontSize="20" Margin="23 0 0 0" Width="97" Click="btnAnalogPin_Click"/>
+                        </StackPanel>
+                        <Slider x:Name="sldAnalogPin3" Minimum="0" Maximum="255" Value="0" Margin="0 10 0 0"/>
+                    </StackPanel>
+                    <StackPanel Margin="10 10 10 0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="24" Text="Pin 5: "/>
+                            <Button x:Name="btnAnalogPin5ReadWrite" Content="Read" FontSize="20" Margin="23 0 0 0" Width="97" Click="btnAnalogPin_Click"/>
+                        </StackPanel>
+                        <Slider x:Name="sldAnalogPin5" Minimum="0" Maximum="255" Value="0" Margin="0 10 0 0"/>
+                    </StackPanel>
+                    <StackPanel Margin="10 10 10 0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="24" Text="Pin 6: "/>
+                            <Button x:Name="btnAnalogPin6ReadWrite" Content="Read" FontSize="20" Margin="23 0 0 0" Width="97" Click="btnAnalogPin_Click"/>
+                        </StackPanel>
+                        <Slider x:Name="sldAnalogPin6" Minimum="0" Maximum="255" Value="0" Margin="0 10 0 0"/>
+                    </StackPanel>
+                    <StackPanel Margin="10 10 10 0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="24" Text="Pin 9: "/>
+                            <Button x:Name="btnAnalogPin9ReadWrite" Content="Read" FontSize="20" Margin="23 0 0 0" Width="97" Click="btnAnalogPin_Click"/>
+                        </StackPanel>
+                        <Slider x:Name="sldAnalogPin9" Minimum="0" Maximum="255" Value="0" Margin="0 10 0 0"/>
+                    </StackPanel>
+                    <StackPanel Margin="10 10 10 0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="24" Text="Pin 10: "/>
+                            <Button x:Name="btnAnalogPin10ReadWrite" Content="Read" FontSize="20" Margin="23 0 0 0" Width="97" Click="btnAnalogPin_Click"/>
+                        </StackPanel>
+                        <Slider x:Name="sldAnalogPin10" Minimum="0" Maximum="255" Value="0" Margin="0 10 0 0"/>
+                    </StackPanel>
+                    <StackPanel Margin="10 10 10 0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontSize="24" Text="Pin 11: "/>
+                            <Button x:Name="btnAnalogPin11ReadWrite" Content="Read" FontSize="20" Margin="23 0 0 0" Width="97" Click="btnAnalogPin_Click"/>
+                        </StackPanel>
+                        <Slider x:Name="sldAnalogPin11" Minimum="0" Maximum="255" Value="0" Margin="0 10 0 0"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

@@ -1,0 +1,20 @@
+﻿<Page
+    x:Class="Project_Phoenix.Views.CGeneratingView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Project_Phoenix.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" MaxWidth="720">
+        <TextBlock Text="Here's your C code to deploy to Arduino: " Margin="10 10 10 0" FontSize="24" TextWrapping="Wrap"
+                       Foreground="{StaticResource SystemControlBackgroundAccentBrush}"/>
+        <ScrollViewer Margin="0 86 0 48">
+            <TextBlock x:Name="txbCCode" Margin="10 10 10 0" TextWrapping="Wrap" FontSize="18"/>
+        </ScrollViewer>
+        <CommandBar VerticalAlignment="Bottom">
+            <AppBarButton x:Name="btnSave" Icon="Save" Label="Save" Click="btnSave_Click"/>
+        </CommandBar>
+    </Grid>
+</Page>

@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="Project_Phoenix.Views.MainView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Project_Phoenix.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" MaxWidth="720">
+        <StackPanel x:Name="stkConnection" VerticalAlignment="Top">
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="{StaticResource SystemControlBackgroundAccentBrush}"
+                   Margin="10 10 0 0" FontSize="24" Text="Connection type: " RequestedTheme="Dark"/>
+            <StackPanel Orientation="Horizontal" Margin="10 10 0 0">
+                <RadioButton x:Name="radBluetooth" Content="Bluetooth" FontSize="20" Margin="5 0 0 0" IsChecked="True"/>
+                <RadioButton x:Name="radUSB" Content="USB" FontSize="20" Margin="5 0 0 0"/>
+                <TextBlock Text="Baud: " FontSize="20" Margin="5 0 0 0"/>
+                <ComboBox x:Name="cmbBands" Margin="5 0 0 0" SelectedIndex="4">
+                    <ComboBoxItem>300</ComboBoxItem>
+                    <ComboBoxItem>1200</ComboBoxItem>
+                    <ComboBoxItem>2400</ComboBoxItem>
+                    <ComboBoxItem>4800</ComboBoxItem>
+                    <ComboBoxItem>9600</ComboBoxItem>
+                    <ComboBoxItem>19200</ComboBoxItem>
+                    <ComboBoxItem>38400</ComboBoxItem>
+                    <ComboBoxItem>57600</ComboBoxItem>
+                    <ComboBoxItem>115200</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <ListView x:Name="lstDevices" Margin="10">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" Foreground="{StaticResource SystemControlBackgroundAccentBrush}"
+                                   FontSize="21"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+                <Button x:Name="btnConnect" Content="Connect" FontSize="24" Background="Transparent"
+                    Foreground="{StaticResource SystemControlBackgroundAccentBrush}" Click="btn_Click"/>
+                <Button x:Name="btnRefresh" Content="Refresh" FontSize="24" Background="Transparent"
+                    Foreground="{StaticResource SystemControlBackgroundAccentBrush}" Margin="10 0 0 0" Click="btn_Click"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center">
+                <Button x:Name="btnBasicControl" Content="Basic Control" IsEnabled="False" Click="btn_Click"/>
+                <Button x:Name="btnIDE" Content="Project Phoenix IDE" IsEnabled="False" Click="btn_Click" Margin="10 0 0 0"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

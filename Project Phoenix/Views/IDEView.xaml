@@ -1,0 +1,40 @@
+﻿<Page
+    x:Class="Project_Phoenix.Views.IDEView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Project_Phoenix.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" MaxWidth="720" HorizontalAlignment="Center">
+        <ListView x:Name="lstCommands" Margin="10 10 10 90">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel x:Name="stkControlsMaster" VerticalAlignment="Bottom" Height="80" Margin="10 0 10 0">
+            <StackPanel x:Name="stkCommands" Orientation="Horizontal" HorizontalAlignment="Center">
+                <ComboBox x:Name="cmbCommands" MinWidth="250">
+                    <ComboBoxItem>Digital Write</ComboBoxItem>
+                    <ComboBoxItem>Digital Read</ComboBoxItem>
+                    <ComboBoxItem>Analog Write</ComboBoxItem>
+                    <ComboBoxItem>Analog Read</ComboBoxItem>
+                    <ComboBoxItem>Delay</ComboBoxItem>
+                </ComboBox>
+                <Button x:Name="btnExcute" Content="Excute" Margin="10 0 0 0" MinWidth="80" Background="DarkGreen" Foreground="White" Click="btn_Click"/>
+            </StackPanel>
+            <StackPanel x:Name="stkParameters" Orientation="Horizontal" HorizontalAlignment="Center"
+                        Margin="0 10 0 0">
+                <ComboBox x:Name="cmbPins" MinWidth="120">
+                </ComboBox>
+                <TextBox x:Name="txtValue" MinWidth="120" Margin="10 0 0 0"/>
+                <Button x:Name="btnAdd" Content="Add" Margin="10 0 0 0" Width="80" Click="btn_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
