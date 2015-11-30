@@ -120,6 +120,38 @@ namespace Project_Phoenix.Views
                             var pin = byte.Parse(commands[i].Split(new string[] { "Pin " }, StringSplitOptions.RemoveEmptyEntries)[1]);
                             Device.Arduino.analogWrite(pin, (ushort)int.Parse(value));
                         }
+                        else if (commands[i].StartsWith("Increasing voltage"))
+                        {
+                            string _pin = commands[i].Split(new string[] { "pin " }, StringSplitOptions.RemoveEmptyEntries)[1].
+                                            Split(new string[] { " by" }, StringSplitOptions.RemoveEmptyEntries)[0];
+                            string _incr = commands[i].Split(new string[] { "by " }, StringSplitOptions.RemoveEmptyEntries)[1].
+                                            Split(new string[] { "/255" }, StringSplitOptions.RemoveEmptyEntries)[0];
+                            string _time = commands[i].Split(new string[] { "every " }, StringSplitOptions.RemoveEmptyEntries)[1].
+                                            Split(new string[] { " milli-second" }, StringSplitOptions.RemoveEmptyEntries)[0];
+                            byte pin = byte.Parse(_pin);
+                            int incr = int.Parse(_incr), time = int.Parse(_time);
+                            for (int j = 0; j <= 255; j += incr)
+                            {
+                                Device.Arduino.analogWrite(pin, (ushort)j);
+                                await Task.Delay(time);
+                            }
+                        }
+                        else if (commands[i].StartsWith("Decreasing voltage"))
+                        {
+                            string _pin = commands[i].Split(new string[] { "pin " }, StringSplitOptions.RemoveEmptyEntries)[1].
+                                            Split(new string[] { " by" }, StringSplitOptions.RemoveEmptyEntries)[0];
+                            string _decr = commands[i].Split(new string[] { "by " }, StringSplitOptions.RemoveEmptyEntries)[1].
+                                            Split(new string[] { "/255" }, StringSplitOptions.RemoveEmptyEntries)[0];
+                            string _time = commands[i].Split(new string[] { "every " }, StringSplitOptions.RemoveEmptyEntries)[1].
+                                            Split(new string[] { " milli-second" }, StringSplitOptions.RemoveEmptyEntries)[0];
+                            byte pin = byte.Parse(_pin);
+                            int decr = int.Parse(_decr), time = int.Parse(_time);
+                            for (int j = 255; j >= 0; j -= decr)
+                            {
+                                Device.Arduino.analogWrite(pin, (ushort)j);
+                                await Task.Delay(time);
+                            }
+                        }
                         else continue;
                         if (cts.IsCancellationRequested) break;
                     }
