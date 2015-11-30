@@ -100,8 +100,6 @@ namespace Project_Phoenix.Views
                         else if (commands[i].StartsWith("Measuring"))
                         {
                             var pin = commands[i].Split(new string[] { "Pin " }, StringSplitOptions.RemoveEmptyEntries)[1];
-                            /*if (pin.Length == 1) _pin = byte.Parse(pin);
-                            else _pin = byte.Parse((int.Parse(pin[1].ToString()) + 14).ToString());*/
                             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                             {
                                 TextBlock txb = new TextBlock() { Text = "Measuring pin " + pin + " is: " + Device.Arduino.analogRead(pin).ToString() };
