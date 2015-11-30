@@ -83,13 +83,33 @@ namespace Project_Phoenix.Views
                     var pin = byte.Parse(commands[i].Split(new string[] { "Pin " }, StringSplitOptions.RemoveEmptyEntries)[1]);
                     result += "analogWrite(" + pin + ", " + value + ");\n";
                 }
+                else if (commands[i].StartsWith("Increasing voltage"))
+                {
+                    string _pin = commands[i].Split(new string[] { "pin " }, StringSplitOptions.RemoveEmptyEntries)[1].
+                                    Split(new string[] { " by" }, StringSplitOptions.RemoveEmptyEntries)[0];
+                    string _incr = commands[i].Split(new string[] { "by " }, StringSplitOptions.RemoveEmptyEntries)[1].
+                                    Split(new string[] { "/255" }, StringSplitOptions.RemoveEmptyEntries)[0];
+                    string _time = commands[i].Split(new string[] { "every " }, StringSplitOptions.RemoveEmptyEntries)[1].
+                                    Split(new string[] { " milli-second" }, StringSplitOptions.RemoveEmptyEntries)[0];
+                    result += "for (int i" + i.ToString() + " = 0; i" + i.ToString() + " <= 255; i" + i.ToString() + " += " + _incr + ")\n{\n";
+                    result += "\tanalogWrite(" + _pin + ", i" + i.ToString() + ");\n";
+                    result += "\tdelay(" + _time + ");\n}\n";
+                }
+                else if (commands[i].StartsWith("Decreasing voltage"))
+                {
+                    string _pin = commands[i].Split(new string[] { "pin " }, StringSplitOptions.RemoveEmptyEntries)[1].
+                                    Split(new string[] { " by" }, StringSplitOptions.RemoveEmptyEntries)[0];
+                    string _decr = commands[i].Split(new string[] { "by " }, StringSplitOptions.RemoveEmptyEntries)[1].
+                                    Split(new string[] { "/255" }, StringSplitOptions.RemoveEmptyEntries)[0];
+                    string _time = commands[i].Split(new string[] { "every " }, StringSplitOptions.RemoveEmptyEntries)[1].
+                                    Split(new string[] { " milli-second" }, StringSplitOptions.RemoveEmptyEntries)[0];
+                    result += "for (int i" + i.ToString() + " = 255; i" + i.ToString() + " >= 0; i" + i.ToString() + " -= " + _decr + ")\n{\n";
+                    result += "\tanalogWrite(" + _pin + ", i" + i.ToString() + ");\n";
+                    result += "\tdelay(" + _time + ");\n}\n";
+                }
             }
             result += "}\n";
             txbCCode.Text = result;
-            /*Task t = Task.Factory.StartNew(async () =>
-            {
-                
-            }, cts.Token);*/
         }
 
         private async void btnSave_Click(object sender, RoutedEventArgs e)
