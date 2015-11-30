@@ -21,7 +21,7 @@
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxSymbolPackageEnabled>False</AppxSymbolPackageEnabled>
     <AppxBundle>Always</AppxBundle>
-    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <AppxBundlePlatforms>x86|arm</AppxBundlePlatforms>
     <PackageCertificateThumbprint>10A9045F546997350A21A78FACAE140483F7166E</PackageCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
@@ -175,20 +175,6 @@
     <SDKReference Include="WindowsMobile, Version=10.0.10240.0">
       <Name>Windows Mobile Extensions for the UWP</Name>
     </SDKReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Tools\remote-wiring-develop\Microsoft.Maker.win10\Microsoft.Maker.Firmata\Microsoft.Maker.Firmata.vcxproj">
-      <Project>{f0a53bc9-c617-47dd-8b68-f91e3502d633}</Project>
-      <Name>Microsoft.Maker.Firmata</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\Tools\remote-wiring-develop\Microsoft.Maker.win10\Microsoft.Maker.RemoteWiring\Microsoft.Maker.RemoteWiring.vcxproj">
-      <Project>{5a8b1bb1-7cd5-47c4-a1f7-d7bcf5facad1}</Project>
-      <Name>Microsoft.Maker.RemoteWiring</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\Tools\remote-wiring-develop\Microsoft.Maker.win10\Microsoft.Maker.Serial\Microsoft.Maker.Serial.vcxproj">
-      <Project>{8376216c-282a-4927-b9ef-c2d545fe0bca}</Project>
-      <Name>Microsoft.Maker.Serial</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

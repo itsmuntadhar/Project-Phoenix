@@ -95,7 +95,7 @@ namespace Project_Phoenix.Views
             {
                 //sld.IsEnabled = false;
                 sld.ValueChanged -= Sld_ValueChanged;
-                sld.Value = Device.Arduino.analogRead(byte.Parse(pinNumber));
+                sld.Value = Device.Arduino.analogRead(pinNumber);
                 btn.Content = "Write";
             }
             else
