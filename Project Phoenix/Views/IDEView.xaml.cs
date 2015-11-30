@@ -96,16 +96,49 @@ namespace Project_Phoenix.Views
                         return;
                     }
                 }
-                lstCommands.Items.Add(command);
+                else if (cmd == "Constant Increment" || cmd == "Constant Decrement")
+                {
+                    grdAdditionalParameters.Visibility = Visibility.Visible;
+                }
+                if (command != "") lstCommands.Items.Add(command);
                 #endregion
             }
-            else
+            else if (btn == btnExcute)
             {
                 string txt = "";
                 for (int i = 0; i < lstCommands.Items.Count; i++)
                     txt += lstCommands.Items[i].ToString() + "\n";
                 await saveStringToLocalFile("temp.txt", txt);
                 Frame.Navigate(typeof(ExcutingView));
+            }
+            else if (btn == btnSubmit)
+            {
+                int pin, time, val;
+                if (txtPin.Text == "" || !int.TryParse(txtPin.Text, out pin))
+                {
+                    txtPin.BorderBrush = new SolidColorBrush(Colors.Red);
+                    return;
+                }
+                else if (txtTime.Text == "" || !int.TryParse(txtTime.Text, out time))
+                {
+                    txtTime.BorderBrush = new SolidColorBrush(Colors.Red);
+                    return;
+                }
+                else if (txtIncr.Text == "" || !int.TryParse(txtIncr.Text, out val))
+                {
+                    txtIncr.BorderBrush = new SolidColorBrush(Colors.Red);
+                    return;
+                }
+                string cmd = (string)(((ComboBoxItem)cmbCommands.SelectedItem).Content);
+                if (cmd == "Constant Increment") lstCommands.Items.Add(string.Format("Increasing voltage on pin {0} by {1}/255 every {2} milli-second", pin, val, time));
+                else lstCommands.Items.Add(string.Format("Decreasing voltage on pin {0} by {1}/255 every {2} milli-second", pin, val, time));
+                txtIncr.Text = txtPin.Text = txtTime.Text = "";
+                grdAdditionalParameters.Visibility = Visibility.Collapsed;
+            }
+            else if (btn == btnCancel)
+            {
+                txtIncr.Text = txtPin.Text = txtTime.Text = "";
+                grdAdditionalParameters.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -152,6 +185,11 @@ namespace Project_Phoenix.Views
                 txtValue.IsEnabled = true;
                 txtValue.PlaceholderText = "time in ms";
             }
+            else if (cmd == "Constant Increment" || cmd == "Constant Decrement")
+            {
+                cmbPins.IsEnabled = false;
+                txtValue.IsEnabled = false;
+            }
         }
 
         private async Task saveStringToLocalFile(string filename, string content)
@@ -166,6 +204,11 @@ namespace Project_Phoenix.Views
             StorageFile file = await ApplicationData.Current.LocalFolder.CreateFileAsync(filename, CreationCollisionOption.ReplaceExisting);
             using (var stream = await file.OpenStreamForWriteAsync())
                 stream.Write(fileBytes, 0, fileBytes.Length);
+        }
+
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            lstCommands.Items.Remove(lstCommands.SelectedItem);
         }
     }
 }

@@ -12,7 +12,8 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding}"/>
+                        <AppBarButton Icon="Remove" Click="AppBarButton_Click" VerticalAlignment="Center" Visibility="Collapsed"/>
+                        <TextBlock Text="{Binding}" Margin="10 0 0 0" VerticalAlignment="Center" FontSize="16"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
@@ -25,6 +26,8 @@
                     <ComboBoxItem>Analog Write</ComboBoxItem>
                     <ComboBoxItem>Analog Read</ComboBoxItem>
                     <ComboBoxItem>Delay</ComboBoxItem>
+                    <ComboBoxItem>Constant Increment</ComboBoxItem>
+                    <ComboBoxItem>Constant Decrement</ComboBoxItem>
                 </ComboBox>
                 <Button x:Name="btnExcute" Content="Excute" Margin="10 0 0 0" MinWidth="80" Background="DarkGreen" Foreground="White" Click="btn_Click"/>
             </StackPanel>
@@ -36,5 +39,22 @@
                 <Button x:Name="btnAdd" Content="Add" Margin="10 0 0 0" Width="80" Click="btn_Click"/>
             </StackPanel>
         </StackPanel>
+        <Grid x:Name="grdAdditionalParameters" Visibility="Collapsed">
+            <Grid.Background>
+                <SolidColorBrush Opacity="0.85" Color="White"/>
+            </Grid.Background>
+            <StackPanel VerticalAlignment="Center" Width="{Binding ElementName=lstCommands, Path=ActualWidth}">
+                <TextBlock Text="enter the pin number i.e.: 3"/>
+                <TextBox x:Name="txtPin"/>
+                <TextBlock Text="enter the time between each loop in ms" Margin="0 10 0 0"/>
+                <TextBox x:Name="txtTime"/>
+                <TextBlock Text="enter the changing amount for each loop i.e.: 1" Margin="0 10 0 0"/>
+                <TextBox x:Name="txtIncr"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10 10 10 0">
+                    <Button x:Name="btnSubmit" Content="Submit" FontSize="21" Width="100" Click="btn_Click"/>
+                    <Button x:Name="btnCancel" Content="Cancel" FontSize="21" Width="100" Margin="10 0 0 0" Click="btn_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>
