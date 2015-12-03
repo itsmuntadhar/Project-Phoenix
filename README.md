@@ -10,6 +10,9 @@ or entering this command in NuGet Console: Install-Package Windows-Remote-Arduin
 
 v0.2.3.5 Changelog:
 Saving YOUR programs, locally, to open them later.
+
 Files Managments will be enhanced next update.
+
 Better connection managment.
+
 Various improvements.
