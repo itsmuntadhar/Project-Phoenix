@@ -7,3 +7,9 @@ This application needs Microsoft's remote-wiring which you can get from: https:/
 
 The Beta 2 uses NuGet Package, you can get it from here: https://www.nuget.org/packages/Windows-Remote-Arduino 
 or entering this command in NuGet Console: Install-Package Windows-Remote-Arduino
+
+v0.2.3.5 Changelog:
+Saving YOUR programs, locally, to open them later.
+Files Managments will be enhanced next update.
+Better connection managment.
+Various improvements.
