@@ -14,5 +14,7 @@ namespace Project_Phoenix.Code
         { "3", "5", "6", "9", "10", "11", };
         public static List<string> lstAnalogPins = new List<string>()
         { "A0", "A1", "A2", "A3", "A4", "A5",};
+        
+        public enum MessageType { Info, Error };
     }
 }

@@ -1,5 +1,4 @@
-﻿using Microsoft.Maker.Serial;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -17,12 +16,19 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.Maker.RemoteWiring;
+using Microsoft.Maker.Serial;
 
 namespace Project_Phoenix
 {
     public sealed partial class MainPage : Page
     {
         SystemNavigationManager currentView = SystemNavigationManager.GetForCurrentView();
+        public static BluetoothSerial bluetooth;
+        public static UsbSerial usb;
+        public static RemoteDevice Arduino;
+        public static bool isConnected = false;
+
         public MainPage()
         {
             this.InitializeComponent();

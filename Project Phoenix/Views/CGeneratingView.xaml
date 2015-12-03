@@ -7,7 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" MaxWidth="720">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock Text="Here's your C code to deploy to Arduino: " Margin="10 10 10 0" FontSize="24" TextWrapping="Wrap"
                        Foreground="{StaticResource SystemControlBackgroundAccentBrush}"/>
         <ScrollViewer Margin="0 86 0 48">

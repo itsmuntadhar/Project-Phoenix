@@ -72,52 +72,52 @@ namespace Project_Phoenix.Views
                 {
                     for (int i = 0; i < commands.Length; i++)
                     {
-                        if (commands[i].StartsWith("Applying"))
+                        if (commands[i].StartsWith("Apply"))
                         {
-                            var parameter = commands[i].Substring(9, 2);
-                            var pin = commands[i].Substring(19);
+                            var parameter = commands[i].Substring(6, 2);
+                            var pin = commands[i].Substring(16);
                             if (parameter.StartsWith("0"))
-                                Device.Arduino.digitalWrite(byte.Parse(pin), Microsoft.Maker.RemoteWiring.PinState.LOW);
+                                MainPage.Arduino.digitalWrite(byte.Parse(pin), Microsoft.Maker.RemoteWiring.PinState.LOW);
                             else
-                                Device.Arduino.digitalWrite(byte.Parse(pin), Microsoft.Maker.RemoteWiring.PinState.HIGH);
+                                MainPage.Arduino.digitalWrite(byte.Parse(pin), Microsoft.Maker.RemoteWiring.PinState.HIGH);
                         }
-                        else if (commands[i].StartsWith("Waiting"))
+                        else if (commands[i].StartsWith("Wait"))
                         {
-                            await Task.Delay(int.Parse(commands[i].Substring(8).Split(' ')[0]));
+                            await Task.Delay(int.Parse(commands[i].Substring(5).Split(' ')[0]));
                         }
-                        else if (commands[i].StartsWith("Reading"))
+                        else if (commands[i].StartsWith("Read"))
                         {
-                            var pin = commands[i].Substring(17);
+                            var pin = commands[i].Substring(14);
                             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () => 
                                 {
-                                    TextBlock txb = new TextBlock() { Text = "Reading from pin " + pin + " is: " + Device.Arduino.digitalRead(byte.Parse(pin)).ToString() };
+                                    TextBlock txb = new TextBlock() { Text = "Reading from pin " + pin + " is: " + MainPage.Arduino.digitalRead(byte.Parse(pin)).ToString() };
                                     txb.Margin = new Thickness(0, 10, 0, 0);
                                     stkOutputs.Children.Add(txb);
                                     srv.UpdateLayout();
                                     srv.ChangeView(0, stkOutputs.ActualHeight, 1.0f, false);
                                 });
                         }
-                        else if (commands[i].StartsWith("Measuring"))
+                        else if (commands[i].StartsWith("Measure"))
                         {
                             var pin = commands[i].Split(new string[] { "Pin " }, StringSplitOptions.RemoveEmptyEntries)[1];
                             await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
                             {
-                                TextBlock txb = new TextBlock() { Text = "Measuring pin " + pin + " is: " + Device.Arduino.analogRead(pin).ToString() };
+                                TextBlock txb = new TextBlock() { Text = "Measuring pin " + pin + " is: " + MainPage.Arduino.analogRead(pin).ToString() };
                                 txb.Margin = new Thickness(0, 10, 0, 0);
                                 stkOutputs.Children.Add(txb);
                                 srv.UpdateLayout();
                                 srv.ChangeView(0, stkOutputs.ActualHeight, 1.0f, false);
                             });
                         }
-                        else if (commands[i].StartsWith("Sending"))
+                        else if (commands[i].StartsWith("Send"))
                         {
-                            var value = commands[i].Substring(8, 2);
+                            var value = commands[i].Substring(5, 2);
                             if (!(value[1] >= 48 && value[1] <= 57))
-                                value = commands[i].Substring(8, 1);
+                                value = commands[i].Substring(5, 1);
                             var pin = byte.Parse(commands[i].Split(new string[] { "Pin " }, StringSplitOptions.RemoveEmptyEntries)[1]);
-                            Device.Arduino.analogWrite(pin, (ushort)int.Parse(value));
+                            MainPage.Arduino.analogWrite(pin, (ushort)int.Parse(value));
                         }
-                        else if (commands[i].StartsWith("Increasing voltage"))
+                        else if (commands[i].StartsWith("Increase voltage"))
                         {
                             string _pin = commands[i].Split(new string[] { "pin " }, StringSplitOptions.RemoveEmptyEntries)[1].
                                             Split(new string[] { " by" }, StringSplitOptions.RemoveEmptyEntries)[0];
@@ -129,11 +129,11 @@ namespace Project_Phoenix.Views
                             int incr = int.Parse(_incr), time = int.Parse(_time);
                             for (int j = 0; j <= 255; j += incr)
                             {
-                                Device.Arduino.analogWrite(pin, (ushort)j);
+                                MainPage.Arduino.analogWrite(pin, (ushort)j);
                                 await Task.Delay(time);
                             }
                         }
-                        else if (commands[i].StartsWith("Decreasing voltage"))
+                        else if (commands[i].StartsWith("Decrease voltage"))
                         {
                             string _pin = commands[i].Split(new string[] { "pin " }, StringSplitOptions.RemoveEmptyEntries)[1].
                                             Split(new string[] { " by" }, StringSplitOptions.RemoveEmptyEntries)[0];
@@ -145,7 +145,7 @@ namespace Project_Phoenix.Views
                             int decr = int.Parse(_decr), time = int.Parse(_time);
                             for (int j = 255; j >= 0; j -= decr)
                             {
-                                Device.Arduino.analogWrite(pin, (ushort)j);
+                                MainPage.Arduino.analogWrite(pin, (ushort)j);
                                 await Task.Delay(time);
                             }
                         }

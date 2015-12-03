@@ -7,23 +7,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" MaxWidth="720">
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <TextBlock x:Name="txb" Text="Working, hit Pasue to stop" Margin="10 10 0 0" FontSize="24"
                    Foreground="{StaticResource SystemControlBackgroundAccentBrush}"/>
         <ScrollViewer x:Name="srv" Margin="10 48">
             <StackPanel x:Name="stkOutputs">
-                
+
             </StackPanel>
         </ScrollViewer>
-        <!--<ListView x:Name="lstOutput" Margin="10 48">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>-->
         <CommandBar VerticalAlignment="Bottom">
             <AppBarButton x:Name="btnPause" Icon="Pause" Label="Pause" Click="AppBarButton_Click"/>
             <AppBarButton x:Name="btnCCode" Icon="Upload" Label="Generate C Code" Click="AppBarButton_Click"/>

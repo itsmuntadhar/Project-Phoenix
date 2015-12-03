@@ -57,18 +57,18 @@ namespace Project_Phoenix.Views
                 {
                     btn.Background = btn.BorderBrush = new SolidColorBrush(Colors.Green);
                     btn.Content = "On";
-                    Device.Arduino.digitalWrite(byte.Parse(pinNumber), Microsoft.Maker.RemoteWiring.PinState.HIGH);
+                    MainPage.Arduino.digitalWrite(byte.Parse(pinNumber), Microsoft.Maker.RemoteWiring.PinState.HIGH);
                 }
                 else
                 {
                     btn.Background = btn.BorderBrush = new SolidColorBrush(Colors.Red);
                     btn.Content = "Off";
-                    Device.Arduino.digitalWrite(byte.Parse(pinNumber), Microsoft.Maker.RemoteWiring.PinState.LOW);
+                    MainPage.Arduino.digitalWrite(byte.Parse(pinNumber), Microsoft.Maker.RemoteWiring.PinState.LOW);
                 }
             }
             else if (btn.Name.Contains("Read")) 
             {
-                var res = Device.Arduino.digitalRead(byte.Parse(pinNumber));
+                var res = MainPage.Arduino.digitalRead(byte.Parse(pinNumber));
                 var p = (StackPanel)btn.Parent;
                 var b = (Button)p.Children[1];
                 if (res == Microsoft.Maker.RemoteWiring.PinState.HIGH)
@@ -95,7 +95,7 @@ namespace Project_Phoenix.Views
             {
                 //sld.IsEnabled = false;
                 sld.ValueChanged -= Sld_ValueChanged;
-                sld.Value = Device.Arduino.analogRead(pinNumber);
+                sld.Value = MainPage.Arduino.analogRead(pinNumber);
                 btn.Content = "Write";
             }
             else
@@ -115,7 +115,7 @@ namespace Project_Phoenix.Views
                 if (!(pinNumber[1] >= 48 && pinNumber[1] <= 57)) pinNumber = pinNumber.Substring(0, 1);
                 else pinNumber = pinNumber.Substring(0, 2);
             }
-            Device.Arduino.analogWrite(byte.Parse(pinNumber), (ushort)sld.Value);
+            MainPage.Arduino.analogWrite(byte.Parse(pinNumber), (ushort)sld.Value);
         }
     }
 }

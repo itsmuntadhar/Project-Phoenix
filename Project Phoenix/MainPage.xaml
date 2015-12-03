@@ -9,7 +9,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid x:Name="grdHead" Background="{StaticResource SystemControlBackgroundAccentBrush}" Height="64" VerticalAlignment="Top">
-            <TextBlock Text="Project Phoenix Beta 1" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center" RequestedTheme="Dark"/>
+            <TextBlock Text="Project Phoenix Beta" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center" RequestedTheme="Dark"/>
         </Grid>
         <Frame x:Name="frame" Margin="0, 64, 0, 0"/>
     </Grid>

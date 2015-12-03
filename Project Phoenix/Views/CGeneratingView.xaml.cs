@@ -40,22 +40,22 @@ namespace Project_Phoenix.Views
             var commands = text.Split('\n');
             for (int i = 0; i < commands.Length; i++)
             {
-                if (commands[i].StartsWith("Applying"))
+                if (commands[i].StartsWith("Apply"))
                 {
-                    var parameter = commands[i].Substring(9, 2);
-                    var pin = commands[i].Substring(19);
+                    var parameter = commands[i].Substring(6, 2);
+                    var pin = commands[i].Substring(16);
                     if (parameter.StartsWith("0"))
                         result += "digitalWrite(" + pin + ", LOW);\n";
                     else
                         result += "digitalWrite(" + pin + ", HIGH);\n";
                 }
-                else if (commands[i].StartsWith("Waiting"))
+                else if (commands[i].StartsWith("Wait"))
                 {
-                    result += "delay(" + commands[i].Substring(8).Split(' ')[0] + ");\n";
+                    result += "delay(" + commands[i].Substring(5).Split(' ')[0] + ");\n";
                 }
-                else if (commands[i].StartsWith("Reading"))
+                else if (commands[i].StartsWith("Read"))
                 {
-                    var pin = commands[i].Substring(17);
+                    var pin = commands[i].Substring(14);
                     result += "serial.println(digitalRead(" + pin + "));\n";
                     if (!hasSerial)
                     {
@@ -64,7 +64,7 @@ namespace Project_Phoenix.Views
                         hasSerial = true;
                     }
                 }
-                else if (commands[i].StartsWith("Measuring"))
+                else if (commands[i].StartsWith("Measure"))
                 {
                     var pin = commands[i].Split(new string[] { "Pin " }, StringSplitOptions.RemoveEmptyEntries)[1];
                     result += "serial.println(analogRead(" + pin + "));\n";
@@ -75,15 +75,15 @@ namespace Project_Phoenix.Views
                         hasSerial = true;
                     }
                 }
-                else if (commands[i].StartsWith("Sending"))
+                else if (commands[i].StartsWith("Send"))
                 {
-                    var value = commands[i].Substring(8, 2);
+                    var value = commands[i].Substring(5, 2);
                     if (!(value[1] >= 48 && value[1] <= 57))
-                        value = commands[i].Substring(8, 1);
+                        value = commands[i].Substring(5, 1);
                     var pin = byte.Parse(commands[i].Split(new string[] { "Pin " }, StringSplitOptions.RemoveEmptyEntries)[1]);
                     result += "analogWrite(" + pin + ", " + value + ");\n";
                 }
-                else if (commands[i].StartsWith("Increasing voltage"))
+                else if (commands[i].StartsWith("Increase voltage"))
                 {
                     string _pin = commands[i].Split(new string[] { "pin " }, StringSplitOptions.RemoveEmptyEntries)[1].
                                     Split(new string[] { " by" }, StringSplitOptions.RemoveEmptyEntries)[0];
@@ -95,7 +95,7 @@ namespace Project_Phoenix.Views
                     result += "\tanalogWrite(" + _pin + ", i" + i.ToString() + ");\n";
                     result += "\tdelay(" + _time + ");\n}\n";
                 }
-                else if (commands[i].StartsWith("Decreasing voltage"))
+                else if (commands[i].StartsWith("Decrease voltage"))
                 {
                     string _pin = commands[i].Split(new string[] { "pin " }, StringSplitOptions.RemoveEmptyEntries)[1].
                                     Split(new string[] { " by" }, StringSplitOptions.RemoveEmptyEntries)[0];

@@ -7,18 +7,31 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" MaxWidth="720" HorizontalAlignment="Center">
-        <ListView x:Name="lstCommands" Margin="10 10 10 90">
+    <Grid x:Name="grid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="720"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="stkControlsMaster.Orientation" Value="Horizontal"/>
+                        <Setter Target="stkControlsMaster.Height" Value="40"/>
+                        <Setter Target="stkParameters.Margin" Value="10 0 0 0"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <ListView x:Name="lstCommands" Margin="0 0 0 48" MaxWidth="720">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <AppBarButton Icon="Remove" Click="AppBarButton_Click" VerticalAlignment="Center" Visibility="Collapsed"/>
                         <TextBlock Text="{Binding}" Margin="10 0 0 0" VerticalAlignment="Center" FontSize="16"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <StackPanel x:Name="stkControlsMaster" VerticalAlignment="Bottom" Height="80" Margin="10 0 10 0">
+        <StackPanel x:Name="stkControlsMaster" VerticalAlignment="Bottom" Height="80" Margin="10 0 10 48" MaxWidth="720">
             <StackPanel x:Name="stkCommands" Orientation="Horizontal" HorizontalAlignment="Center">
                 <ComboBox x:Name="cmbCommands" MinWidth="250">
                     <ComboBoxItem>Digital Write</ComboBoxItem>
@@ -29,17 +42,15 @@
                     <ComboBoxItem>Constant Increment</ComboBoxItem>
                     <ComboBoxItem>Constant Decrement</ComboBoxItem>
                 </ComboBox>
-                <Button x:Name="btnExcute" Content="Excute" Margin="10 0 0 0" MinWidth="80" Background="DarkGreen" Foreground="White" Click="btn_Click"/>
             </StackPanel>
             <StackPanel x:Name="stkParameters" Orientation="Horizontal" HorizontalAlignment="Center"
                         Margin="0 10 0 0">
                 <ComboBox x:Name="cmbPins" MinWidth="120">
                 </ComboBox>
-                <TextBox x:Name="txtValue" MinWidth="120" Margin="10 0 0 0"/>
-                <Button x:Name="btnAdd" Content="Add" Margin="10 0 0 0" Width="80" Click="btn_Click"/>
+                <TextBox x:Name="txtValue" MinWidth="120" Margin="10 0 0 0" Height="22" VerticalAlignment="Top"/>
             </StackPanel>
         </StackPanel>
-        <Grid x:Name="grdAdditionalParameters" Visibility="Collapsed">
+        <Grid x:Name="grdAdditionalParameters" Visibility="Collapsed" MaxWidth="720">
             <Grid.Background>
                 <SolidColorBrush Opacity="0.85" Color="White"/>
             </Grid.Background>
@@ -56,5 +67,20 @@
                 </StackPanel>
             </StackPanel>
         </Grid>
+        <CommandBar VerticalAlignment="Bottom" MinWidth="{Binding ElementName=grid, Path=ActualWidth}">
+            <AppBarButton x:Name="btnSave" Icon="Save" Label="Save" Click="AppBarButton_Click"/>
+            <AppBarButton x:Name="btnOpen" Icon="OpenFile" Label="Open" Click="AppBarButton_Click"/>
+            <AppBarButton x:Name="btnAdd" Icon="Add" Label="Add" Click="btn_Click"/>
+            <AppBarButton x:Name="btnExcute" Icon="Go" Label="Excute" Click="btn_Click"/>
+        </CommandBar>
+        <ListView x:Name="_listView" Margin="0 0 0 48" MaxWidth="720" Visibility="Collapsed">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding DisplayName}" Margin="10 0 0 0" VerticalAlignment="Center" FontSize="16"/>
+                </StackPanel>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>
