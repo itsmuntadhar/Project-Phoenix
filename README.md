@@ -9,10 +9,12 @@ The Beta 2 uses NuGet Package, you can get it from here: https://www.nuget.org/p
 or entering this command in NuGet Console: Install-Package Windows-Remote-Arduino
 
 v0.2.3.5 Changelog:
+
 Saving YOUR programs, locally, to open them later.
 
-Files Managments will be enhanced next update.
+Files Managements will be enhanced next update.
 
-Better connection managment.
+Better connection management.
 
 Various improvements.
+
