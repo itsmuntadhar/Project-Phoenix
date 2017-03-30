@@ -1,1 +1,1 @@
-MainPackage=D:\_Programming\CSharp\UWP\Project Phoenix\Project Phoenix\bin\ARM\Release\Upload\Project Phoenix_0.2.0.0_ARM.appx
+MainPackage=D:\_Programming\CSharp\UWP\Project Phoenix\Project Phoenix\bin\ARM\Release\Upload\Project Phoenix_0.2.4.0_ARM.appx

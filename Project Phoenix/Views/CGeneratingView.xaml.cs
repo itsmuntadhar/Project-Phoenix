@@ -23,7 +23,8 @@ using Windows.UI.Xaml.Navigation;
 namespace Project_Phoenix.Views
 {
     public sealed partial class CGeneratingView : Page
-    { 
+    {
+        List<string> PinModedList = new List<string>();
         public CGeneratingView()
         {
             this.InitializeComponent();
@@ -33,7 +34,7 @@ namespace Project_Phoenix.Views
         {
             bool hasSerial = false;
             string result = "";
-            result += "/*This code had been generated using Project Phoenix by MrMHK*/\n";
+            result += "/*This code had been generated using Project Phoenix by Muntadhar Haydar (@mrmhk97)*/\n";
             result += "void setup() \n{\n}\n\n";
             result += "void loop() \n{\n";
             var text = await readStringFromLocalFile("temp.txt");
@@ -48,6 +49,13 @@ namespace Project_Phoenix.Views
                         result += "digitalWrite(" + pin + ", LOW);\n";
                     else
                         result += "digitalWrite(" + pin + ", HIGH);\n";
+                    if (!PinModedList.Contains(pin))
+                    { 
+                        var r = result.Split(new string[] { "void setup() \n{" }, StringSplitOptions.None);
+                        result = r[0] + "void setup() \n{\npinMode(" + pin + ", OUTPUT);" + r[1];
+                        PinModedList.Add(pin);
+                    }
+
                 }
                 else if (commands[i].StartsWith("Wait"))
                 {
@@ -56,11 +64,18 @@ namespace Project_Phoenix.Views
                 else if (commands[i].StartsWith("Read"))
                 {
                     var pin = commands[i].Substring(14);
-                    result += "serial.println(digitalRead(" + pin + "));\n";
+                    result += "Serial.println(digitalRead(" + pin + "));\n";
+
+                    if (!PinModedList.Contains(pin))
+                    {
+                        var r = result.Split(new string[] { "void setup() \n{" }, StringSplitOptions.None);
+                        result = r[0] + "void setup() \n{\npinMode(" + pin + ", INPUT);" + r[1];
+                        PinModedList.Add(pin);
+                    }
                     if (!hasSerial)
                     {
                         var r = result.Split(new string[] { "void setup() \n{" }, StringSplitOptions.None);
-                        result = r[0] + "void setup () \n{\nserial.Begin(9600);" + r[1];
+                        result = r[0] + "void setup() \n{\nSerial.begin(9600);" + r[1];
                         hasSerial = true;
                     }
                 }
@@ -71,7 +86,7 @@ namespace Project_Phoenix.Views
                     if (!hasSerial)
                     {
                         var r = result.Split(new string[] { "void setup() \n{" }, StringSplitOptions.None);
-                        result = r[0] + "void setup () \n{\nserial.Begin(9600);" + r[1];
+                        result = r[0] + "void setup() \n{\nSerial.begin(9600);" + r[1];
                         hasSerial = true;
                     }
                 }
@@ -82,6 +97,12 @@ namespace Project_Phoenix.Views
                         value = commands[i].Substring(5, 1);
                     var pin = byte.Parse(commands[i].Split(new string[] { "Pin " }, StringSplitOptions.RemoveEmptyEntries)[1]);
                     result += "analogWrite(" + pin + ", " + value + ");\n";
+                    if (!PinModedList.Contains(pin.ToString()))
+                    {
+                        var r = result.Split(new string[] { "void setup() \n{" }, StringSplitOptions.None);
+                        result = r[0] + "void setup() \n{\npinMode(" + pin + ", OUTPUT);" + r[1];
+                        PinModedList.Add(pin.ToString());
+                    }
                 }
                 else if (commands[i].StartsWith("Increase voltage"))
                 {
